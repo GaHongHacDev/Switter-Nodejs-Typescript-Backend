@@ -10,14 +10,17 @@ class UsersService {
     return await signToken({
       payload: { userId, token: TokenTypes.AccessToken },
       options:{
-        expiresIn: process.env.ABC123
+        expiresIn: '15m'
       }
     });
   }
 
   private async signRefreshToken(userId: string){
     return await signToken({
-      payload: { userId, token: TokenTypes.RefreshToken }
+      payload: { userId, token: TokenTypes.RefreshToken },
+      options:{
+        expiresIn: '100d'
+      }
     });
   }
 
