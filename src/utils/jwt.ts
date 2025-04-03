@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken'
 
 export const signToken = ({
   payload,
@@ -7,16 +7,16 @@ export const signToken = ({
     algorithm: 'HS256'
   }
 }: {
-  payload: string | Buffer | object, 
-  privatekey?: string, 
+  payload: string | Buffer | object
+  privatekey?: string
   options?: jwt.SignOptions
 }) => {
   return new Promise<string>((resolve, reject) => {
     jwt.sign(payload, privatekey, options, (err, token) => {
       if (err) {
-        return reject(err);
+        return reject(err)
       }
-      return resolve(token as string);
-    });
+      return resolve(token as string)
+    })
   })
 }
